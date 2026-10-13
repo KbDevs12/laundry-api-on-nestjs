@@ -8,4 +8,12 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Profile'
+export type * from './models/Address'
+export type * from './models/Service'
+export type * from './models/Order'
+export type * from './models/OrderItem'
+export type * from './models/OrderStatusHistory'
+export type * from './models/Payment'
+export type * from './models/DeviceToken'
 export type * from './commonInputTypes'
