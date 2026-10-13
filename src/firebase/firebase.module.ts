@@ -1,4 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
+import { FirebaseAdminService } from './firebase-admin.service';
+import { FcmService } from './fcm.service';
 
-@Module({})
+@Global()
+@Module({
+  providers: [FirebaseAdminService, FcmService],
+  exports: [FirebaseAdminService, FcmService],
+})
 export class FirebaseModule {}
