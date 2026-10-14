@@ -39,6 +39,27 @@ Mobile register ke Firebase Auth
     -> backend upsert profile
 ```
 
+Body Request :
+
+```json
+  {
+    "email": "test@example.com"
+    "fullName": "Budi Santoso"
+    "phone": "08123456789"
+  }
+```
+
+Response :
+
+```json
+{
+  "data": {
+    "status": "success",
+    "message": "Akun berhasil dibuat"
+  }
+}
+```
+
 ## Login
 
 login dilakukan di Firebase Auth
