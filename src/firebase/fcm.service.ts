@@ -39,27 +39,31 @@ export class FcmService {
 
   async sendToDevices(
     tokens: string[],
-    message: Omit<admin.MulticastMessage, 'token'>,
+    message: Omit<admin.Message, 'token'>,
   ): Promise<admin.BatchResponse> {
     if (tokens.length === 0) {
-      this.logger.warn('No token provided for FCM Multicast');
+      this.logger.warn('No token provided for FCM');
       return { responses: [], successCount: 0, failureCount: 0 };
     }
+
     try {
       const messaging = this.firebaseAdminService.getMessaging();
 
-      const response = await messaging.sendEachForMulticast({
+      const messages: admin.Message[] = tokens.map((token) => ({
         ...message,
-        tokens,
-      });
+        token,
+      }));
 
-      this.logger.info('FCM multicast completed', {
+      const response = await messaging.sendEach(messages);
+
+      this.logger.info('FCM sendEach completed', {
         successCount: response.successCount,
         failureCount: response.failureCount,
       });
 
       if (response.failureCount > 0) {
         const invalidTokens: string[] = [];
+
         response.responses.forEach((resp, idx) => {
           if (
             !resp.success &&
@@ -68,6 +72,7 @@ export class FcmService {
             invalidTokens.push(tokens[idx]);
           }
         });
+
         if (invalidTokens.length > 0) {
           this.logger.warn(
             'Found invalid FCM tokens, should be removed from DB',
@@ -75,16 +80,18 @@ export class FcmService {
               invalidTokensCount: invalidTokens.length,
             },
           );
-          // TODO: di sini bisa emit event atau panggil DeviceTokenService untuk soft-delete token
+
+          // TODO: panggil DeviceTokenService untuk soft-delete token.
         }
       }
 
       return response;
     } catch (error) {
-      this.logger.error('Failed to send FCM multicast', {
+      this.logger.error('Failed to send FCM messages', {
         error: error instanceof Error ? error.message : String(error),
         tokensCount: tokens.length,
       });
+
       throw error;
     }
   }
