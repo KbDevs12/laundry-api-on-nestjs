@@ -10,6 +10,6 @@ export class UserResponse {
   data?: {
     status: string;
     message: string;
-    profile: Omit<RegisterUserRequest, 'password'>;
+    profile?: Omit<RegisterUserRequest, 'password'>;
   };
 }
