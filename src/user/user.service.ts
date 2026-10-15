@@ -1,4 +1,9 @@
-import { HttpException, Inject, Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import {
   LoginUserRequest,
   RegisterUserRequest,
@@ -41,6 +46,7 @@ export class UserService {
       firebaseUser = await this.admin.getAuth().createUser({
         email: registerRequest.email,
         password: registerRequest.password,
+        phoneNumber: registerRequest.phone,
       });
     } catch (error) {
       this.logger.error('Failed to create user in Firebase Auth', error);
@@ -60,10 +66,8 @@ export class UserService {
       });
 
       return {
-        data: {
-          status: 'ok',
-          message: 'Akun berhasil dibuat.',
-        },
+        status: 'ok',
+        message: 'Akun berhasil dibuat.',
       };
     } catch (error) {
       await this.admin.getAuth().deleteUser(firebaseUser.uid);
@@ -75,5 +79,41 @@ export class UserService {
     }
   }
 
-  async loginWithIdToken(request: LoginUserRequest): Promise<UserResponse> {}
+  async loginWithIdToken(request: LoginUserRequest): Promise<UserResponse> {
+    const loginRequest = this.validationService.validate(
+      UserValidation.LOGIN,
+      request,
+    );
+
+    try {
+      const decodedToken = await this.admin.verifyIdToken(loginRequest.idToken);
+
+      const user = await this.prismaService.profile.findUnique({
+        where: { id: decodedToken.uid, isActive: true },
+        select: {
+          email: true,
+          fullName: true,
+          phone: true,
+          role: true,
+        },
+      });
+
+      if (!user) {
+        throw new HttpException('User tidak ditemukan.', 404);
+      }
+
+      return {
+        status: 'Ok',
+        message: 'Login berhasil.',
+        profile: user,
+      };
+    } catch (error) {
+      this.logger.error('Terjadi error ketika user login.');
+      if (error instanceof HttpException) throw new HttpException(error, 400);
+
+      throw new UnauthorizedException(
+        'Token Firebase tidak valid atau kadaluwarsa',
+      );
+    }
+  }
 }

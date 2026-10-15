@@ -9,11 +9,15 @@ export class LoginUserRequest {
   idToken: string;
 }
 
+export class Profile {
+  email: string;
+  fullName: string;
+  phone: string;
+  role: string;
+}
+
 export class UserResponse {
-  error?: string;
-  data?: {
-    status: string;
-    message: string;
-    profile?: Omit<RegisterUserRequest, 'password'>;
-  };
+  status: string;
+  message: string;
+  profile?: Profile;
 }

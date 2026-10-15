@@ -41,6 +41,7 @@ export class FirebaseAuthGuard implements CanActivate {
           id: decodedToken.uid,
           email: decodedToken.email || '',
           fullName: decodedToken.name || null,
+          phone: decodedToken.phone_number || '',
           role: 'USER',
         },
       });
