@@ -37,4 +37,8 @@ export class UserValidation {
           'Password harus mengandung setidaknya satu simbol (karakter spesial)',
       }),
   });
+
+  static readonly LOGIN = z.object({
+    idToken: z.string().min(1, { message: 'Token tidak boleh kosong.' }),
+  });
 }

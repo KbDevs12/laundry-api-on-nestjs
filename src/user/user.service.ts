@@ -53,12 +53,18 @@ export class UserService {
           id: firebaseUser.uid,
           ...profileData,
         },
+        select: {
+          fullName: true,
+          email: true,
+          phone: true,
+        },
       });
 
       return {
         data: {
           status: 'ok',
           message: 'Akun berhasil dibuat.',
+          profile: user as Omit<RegisterUserRequest, 'password'>,
         },
       };
     } catch (error) {
