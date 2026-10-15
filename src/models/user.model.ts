@@ -5,6 +5,10 @@ export class RegisterUserRequest {
   password: string;
 }
 
+export class LoginUserRequest {
+  idToken: string;
+}
+
 export class UserResponse {
   error?: string;
   data?: {

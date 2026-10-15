@@ -1,5 +1,9 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { RegisterUserRequest, UserResponse } from '../models/user.model';
+import {
+  LoginUserRequest,
+  RegisterUserRequest,
+  UserResponse,
+} from '../models/user.model';
 import { ValidationService } from '../common/validation.service';
 import { Logger } from 'winston';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
@@ -48,7 +52,7 @@ export class UserService {
     try {
       const { password, ...profileData } = registerRequest;
 
-      const user = await this.prismaService.profile.create({
+      await this.prismaService.profile.create({
         data: {
           id: firebaseUser.uid,
           ...profileData,
@@ -70,4 +74,6 @@ export class UserService {
       throw new HttpException('Gagal membuat profil pengguna.', 500);
     }
   }
+
+  async loginWithIdToken(request: LoginUserRequest): Promise<UserResponse> {}
 }
