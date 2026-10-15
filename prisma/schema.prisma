@@ -47,8 +47,8 @@ enum PaymentMethod {
 model Profile {
   id        String   @id
   email     String   @unique
-  fullName  String?
-  phone     String?
+  fullName  String
+  phone     String
   role      Role     @default(USER)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
