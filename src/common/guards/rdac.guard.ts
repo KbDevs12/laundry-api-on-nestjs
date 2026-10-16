@@ -8,7 +8,6 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Logger } from 'winston';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { Observable } from 'rxjs';
 import { Role } from '../../generated/prisma/enums';
 import { ROLES_KEY } from '../decorators/roles.decorator';
 import { AuthenticatedRequest } from '../interfaces/authenticated-request.interface';
