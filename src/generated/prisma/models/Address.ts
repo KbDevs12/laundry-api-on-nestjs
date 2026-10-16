@@ -532,6 +532,10 @@ export type AddressUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.AddressScalarWhereInput | Prisma.AddressScalarWhereInput[]
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type AddressCreateNestedOneWithoutPickupOrdersInput = {
   create?: Prisma.XOR<Prisma.AddressCreateWithoutPickupOrdersInput, Prisma.AddressUncheckedCreateWithoutPickupOrdersInput>
   connectOrCreate?: Prisma.AddressCreateOrConnectWithoutPickupOrdersInput

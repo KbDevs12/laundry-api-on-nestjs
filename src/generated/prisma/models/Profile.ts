@@ -168,8 +168,8 @@ export type ProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ProfileGroupByOutputType = {
   id: string
   email: string
-  fullName: string | null
-  phone: string | null
+  fullName: string
+  phone: string
   role: $Enums.Role
   isActive: boolean
   createdAt: Date
@@ -200,8 +200,8 @@ export type ProfileWhereInput = {
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   id?: Prisma.StringFilter<"Profile"> | string
   email?: Prisma.StringFilter<"Profile"> | string
-  fullName?: Prisma.StringNullableFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableFilter<"Profile"> | string | null
+  fullName?: Prisma.StringFilter<"Profile"> | string
+  phone?: Prisma.StringFilter<"Profile"> | string
   role?: Prisma.EnumRoleFilter<"Profile"> | $Enums.Role
   isActive?: Prisma.BoolFilter<"Profile"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
@@ -215,8 +215,8 @@ export type ProfileWhereInput = {
 export type ProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  fullName?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -233,8 +233,8 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
-  fullName?: Prisma.StringNullableFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableFilter<"Profile"> | string | null
+  fullName?: Prisma.StringFilter<"Profile"> | string
+  phone?: Prisma.StringFilter<"Profile"> | string
   role?: Prisma.EnumRoleFilter<"Profile"> | $Enums.Role
   isActive?: Prisma.BoolFilter<"Profile"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
@@ -248,8 +248,8 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  fullName?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -265,8 +265,8 @@ export type ProfileScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProfileScalarWhereWithAggregatesInput | Prisma.ProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   email?: Prisma.StringWithAggregatesFilter<"Profile"> | string
-  fullName?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  fullName?: Prisma.StringWithAggregatesFilter<"Profile"> | string
+  phone?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"Profile"> | $Enums.Role
   isActive?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
@@ -276,8 +276,8 @@ export type ProfileScalarWhereWithAggregatesInput = {
 export type ProfileCreateInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -291,8 +291,8 @@ export type ProfileCreateInput = {
 export type ProfileUncheckedCreateInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -306,8 +306,8 @@ export type ProfileUncheckedCreateInput = {
 export type ProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -321,8 +321,8 @@ export type ProfileUpdateInput = {
 export type ProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -336,8 +336,8 @@ export type ProfileUncheckedUpdateInput = {
 export type ProfileCreateManyInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -347,8 +347,8 @@ export type ProfileCreateManyInput = {
 export type ProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -358,8 +358,8 @@ export type ProfileUpdateManyMutationInput = {
 export type ProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -411,10 +411,6 @@ export type ProfileNullableScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type EnumRoleFieldUpdateOperationsInput = {
@@ -490,8 +486,8 @@ export type ProfileUpdateOneRequiredWithoutDeviceTokensNestedInput = {
 export type ProfileCreateWithoutAddressesInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -504,8 +500,8 @@ export type ProfileCreateWithoutAddressesInput = {
 export type ProfileUncheckedCreateWithoutAddressesInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -534,8 +530,8 @@ export type ProfileUpdateToOneWithWhereWithoutAddressesInput = {
 export type ProfileUpdateWithoutAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -548,8 +544,8 @@ export type ProfileUpdateWithoutAddressesInput = {
 export type ProfileUncheckedUpdateWithoutAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -562,8 +558,8 @@ export type ProfileUncheckedUpdateWithoutAddressesInput = {
 export type ProfileCreateWithoutOrdersInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -576,8 +572,8 @@ export type ProfileCreateWithoutOrdersInput = {
 export type ProfileUncheckedCreateWithoutOrdersInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -606,8 +602,8 @@ export type ProfileUpdateToOneWithWhereWithoutOrdersInput = {
 export type ProfileUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -620,8 +616,8 @@ export type ProfileUpdateWithoutOrdersInput = {
 export type ProfileUncheckedUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -634,8 +630,8 @@ export type ProfileUncheckedUpdateWithoutOrdersInput = {
 export type ProfileCreateWithoutStatusHistoriesInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -648,8 +644,8 @@ export type ProfileCreateWithoutStatusHistoriesInput = {
 export type ProfileUncheckedCreateWithoutStatusHistoriesInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -678,8 +674,8 @@ export type ProfileUpdateToOneWithWhereWithoutStatusHistoriesInput = {
 export type ProfileUpdateWithoutStatusHistoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -692,8 +688,8 @@ export type ProfileUpdateWithoutStatusHistoriesInput = {
 export type ProfileUncheckedUpdateWithoutStatusHistoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -706,8 +702,8 @@ export type ProfileUncheckedUpdateWithoutStatusHistoriesInput = {
 export type ProfileCreateWithoutDeviceTokensInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -720,8 +716,8 @@ export type ProfileCreateWithoutDeviceTokensInput = {
 export type ProfileUncheckedCreateWithoutDeviceTokensInput = {
   id: string
   email: string
-  fullName?: string | null
-  phone?: string | null
+  fullName: string
+  phone: string
   role?: $Enums.Role
   isActive?: boolean
   createdAt?: Date | string
@@ -750,8 +746,8 @@ export type ProfileUpdateToOneWithWhereWithoutDeviceTokensInput = {
 export type ProfileUpdateWithoutDeviceTokensInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -764,8 +760,8 @@ export type ProfileUpdateWithoutDeviceTokensInput = {
 export type ProfileUncheckedUpdateWithoutDeviceTokensInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -904,8 +900,8 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
-    fullName: string | null
-    phone: string | null
+    fullName: string
+    phone: string
     role: $Enums.Role
     isActive: boolean
     createdAt: Date
