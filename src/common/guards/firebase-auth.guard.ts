@@ -11,7 +11,6 @@ import { Logger } from 'winston';
 import { FirebaseAdminService } from '../../firebase/firebase-admin.service';
 import { PrismaService } from '../prisma.service';
 import { AuthenticatedRequest } from '../interfaces/authenticated-request.interface';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class FirebaseAuthGuard implements CanActivate {

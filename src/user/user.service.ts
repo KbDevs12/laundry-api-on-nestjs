@@ -56,7 +56,7 @@ export class UserService {
       );
     }
     try {
-      const { password, ...profileData } = registerRequest;
+      const { password: _password, ...profileData } = registerRequest;
 
       await this.prismaService.profile.create({
         data: {
