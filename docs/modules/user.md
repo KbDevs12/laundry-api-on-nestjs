@@ -39,6 +39,12 @@ Mobile register ke Firebase Auth
     -> backend upsert profile
 ```
 
+Endpoint:
+
+```text
+POST /api/users
+```
+
 Body Request :
 
 ```json
@@ -54,11 +60,19 @@ Response :
 ```json
 {
   "data": {
-    "status": "success",
+    "status": "Ok",
     "message": "Akun berhasil dibuat"
   }
 }
 ```
+
+### Test case
+
+| Case                | Request                                 | Expected                                             |
+| ------------------- | --------------------------------------- | ---------------------------------------------------- |
+| Request tidak valid | email, fullName, phone, password kosong | `400`, `errors` terisi                               |
+| Register berhasil   | data valid                              | `201`, `data.status = "Ok"`, profile tersimpan di DB |
+| Email sudah dipakai | email yang sama dengan test sebelumnya  | `400`, `errors` terisi                               |
 
 ## Login
 
@@ -71,6 +85,44 @@ Mobile login ke Firebase Auth
     -> backend load profile
     -> backend return profile + role
 ```
+
+Endpoint:
+
+```text
+POST /api/users/login
+```
+
+Body Request :
+
+```json
+{
+  "idToken": "<Firebase IdToken>"
+}
+```
+
+Response :
+
+```json
+{
+  "data": {
+    "status": "Ok",
+    "message": "Login berhasil.",
+    "profile": {
+      "email": "test@example.com",
+      "fullName": "Test User",
+      "phone": "+6283847905954",
+      "role": "USER"
+    }
+  }
+}
+```
+
+### Test case
+
+| Case                | Request                  | Expected                                                 |
+| ------------------- | ------------------------ | -------------------------------------------------------- |
+| idToken tidak valid | idToken: 'invalid-token' | `401`, `errors` terisi                                   |
+| Login berhasil      | idToken dari firebase    | `200`, `data.status = "Ok"`, `data.profile.email` sesuai |
 
 ## Get profile (own)
 
